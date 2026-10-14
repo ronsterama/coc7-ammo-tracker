@@ -1,0 +1,44 @@
+name: Release
+
+# Pushing a tag like v1.2.1 creates the GitHub release, builds module.zip from
+# the coc7-ammo-tracker/ folder, and attaches a module.json whose
+# version/manifest/download point at that release, so Foundry's
+# "Check for Update" works against releases/latest.
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stamp version and URLs into module.json
+        working-directory: coc7-ammo-tracker
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          REPO="${{ github.repository }}"
+          jq --arg v "$VERSION" --arg repo "$REPO" --arg tag "$GITHUB_REF_NAME" '
+            .version = $v
+            | .url = "https://github.com/\($repo)"
+            | .manifest = "https://github.com/\($repo)/releases/latest/download/module.json"
+            | .download = "https://github.com/\($repo)/releases/download/\($tag)/module.zip"
+          ' module.json > module.tmp
+          mv module.tmp module.json
+
+      - name: Build module.zip
+        working-directory: coc7-ammo-tracker
+        run: zip -r ../module.zip . -x "*.zip"
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            coc7-ammo-tracker/module.json
+            module.zip

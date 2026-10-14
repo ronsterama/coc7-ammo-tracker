@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ammo Tracker harness</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="/module/styles/ammo-tracker.css">
+<!-- Optional: Ginzzzu's real sheet CSS from the game server, for a visual check of the Ginzzzu mock -->
+<link rel="stylesheet" href="https://planes-of-peril.moltenhosting.com/modules/ginzzzu-coc7-sheets/styles/investigator-sheet.css">
+<style>
+  /* Rough approximation of CoC7 8.15 styles (investigator.less / summarized.less) for a visual check */
+  body { font-family: Signika, system-ui, sans-serif; font-size: 14px; margin: 12px; background: #e9e4d6; color: #191813; }
+  body.theme-dark { background: #1b1d24; color: #e6e7ec; }
+  .application.coc7 { --main-sheet-interactive-color: #670b0b; --color-labels: #670b0b; border: 1px solid #999; margin: 0 0 16px; padding: 6px 10px; max-width: 760px; background: rgba(255,255,255,.35); }
+  body.theme-dark .application.coc7 { --color-labels: rgb(180 72 73); background: rgba(255,255,255,.04); }
+  .window-header h1 { font-size: 15px; margin: 2px 0 6px; }
+  .weapon-list ul.item-list { list-style: none; padding: 0; margin: 0; }
+  .weapon-list li.item { display: grid; border-bottom: 1px solid; grid-template-columns: 24px 32px 1fr 168px 44px 44px; grid-template-rows: 32px; line-height: 1; }
+  .weapon-list li.item > * { align-self: center; }
+  .weapon-range { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .weapon-controls, .item-controls { display: flex; gap: 5px; align-items: center; }
+  .tag { border: 1px solid; border-radius: 3px; padding: 2px; font-size: 13px; width: 22px; text-align: center; display: inline-block; }
+  .weapon-name.rollable { cursor: pointer; }
+  .weapons-block .item.flexrow { display: grid; grid-template-columns: 1rem auto 1.5rem 2rem; border-bottom: 1px solid; font-size: 12px; max-width: 320px; }
+  .flexrow { display: flex; }
+  .weapons-block .weapon-name { overflow: hidden; }
+  .weapons-block .weapon-name .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .item-header .item-property { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .item-header .flexrow { gap: 6px; align-items: center; }
+  .possessions ul { list-style: none; padding: 0; }
+  #results li.pass { color: #256950; } #results li.fail { color: #b00; font-weight: bold; }
+  body.theme-dark #results li.pass { color: #6fcf97; }
+  #results { font-family: ui-monospace, monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<p><button type="button" onclick="document.body.classList.toggle('theme-dark')">Toggle dark theme</button> <strong id="summary">running…</strong></p>
+<div id="sheets"></div>
+<ol id="results"></ol>
+<script src="/mock-foundry.js"></script>
+<script type="module" src="/tests.js"></script>
+</body>
+</html>

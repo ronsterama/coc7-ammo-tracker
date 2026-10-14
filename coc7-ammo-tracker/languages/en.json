@@ -1,0 +1,60 @@
+{
+  "coc7-ammo-tracker": {
+    "Settings": {
+      "Debug": {
+        "Name": "Debug logging",
+        "Hint": "Write Ammo Tracker diagnostics to the browser console (F12)."
+      },
+      "GinzzzuAmmoFix": {
+        "Name": "Fix double ammo use with Ginzzzu's CoC7 Sheets",
+        "Hint": "Ginzzzu's sheet removes rounds a second time on multi-shot and full-auto attacks (6 rounds, 3 shots: empty). This switches off its extra ammo bookkeeping; CoC7 still spends the rounds you fire. Turn off only if Ginzzzu fixes this upstream."
+      }
+    },
+    "Calibre": "Calibre",
+    "CalibrePlaceholder": "e.g. .38 Special",
+    "Item": {
+      "IsAmmo": "Is ammunition"
+    },
+    "Weapon": {
+      "Legend": "Ammunition",
+      "Loading": "Loading",
+      "LoadingLoose": "Loose rounds (2 per combat round)",
+      "LoadingMagazine": "Magazine / speedloader (1 combat round)",
+      "Hint": "Reloading takes rounds from an ammunition item in Gear with the same calibre.",
+      "NoCapacityHint": "Set the Magazine size so this weapon can be reloaded from Gear."
+    },
+    "Tooltip": {
+      "NoCalibre": "Set a calibre on this weapon",
+      "Reload": "Reload {calibre} from Gear<br>{mode}",
+      "ModeLoose": "Loose rounds: 2 per combat round",
+      "ModeMagazine": "Magazine: 1 combat round",
+      "NativeReload": "Left-click: reload from Gear (Ammo Tracker)<br>Right-click: remove 1 round<br>Shift + right-click: empty"
+    },
+    "Ginzzzu": {
+      "Reserve": "Gear: {n}",
+      "NoCalibre": "No calibre"
+    },
+    "Rounds": {
+      "One": "1 round",
+      "Many": "{n} rounds"
+    },
+    "CombatRounds": {
+      "One": "1 combat round",
+      "Many": "{n} combat rounds"
+    },
+    "Notify": {
+      "Loaded": "{weapon} ({calibre}) loaded {rounds} — {time} (RAW). Reserve: {reserve}.",
+      "PartialLoad": "Partial load: {weapon} ({calibre}) loaded {rounds}, now {loaded}/{capacity} — {time} (RAW). Reserve: {reserve}.",
+      "AlreadyFull": "Already fully loaded.",
+      "NoAmmo": "No {calibre} ammunition.",
+      "NotFirearm": "{weapon} has no magazine size set, so it can't be reloaded from Gear.",
+      "WeaponNotFound": "Ammo Tracker: weapon not found on that actor.",
+      "NoPermission": "You don't own {actor}, so you can't reload their weapons.",
+      "Merged": "Merged {name} ({count}) into {target}. Now {total}.",
+      "Consolidated": "Merged {count} stacks of {calibre} into {name}.",
+      "MergeFailed": "Ammo Tracker couldn't merge ammunition stacks. See the console (F12).",
+      "ReloadFailed": "Ammo Tracker couldn't reload. See the console (F12).",
+      "SaveFailed": "Ammo Tracker couldn't save that change."
+    }
+  }
+}

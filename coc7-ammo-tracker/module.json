@@ -1,0 +1,43 @@
+{
+  "id": "coc7-ammo-tracker",
+  "title": "CoC7 Ammo Tracker",
+  "description": "Reloading a firearm draws rounds from matching-calibre ammunition items in the investigator's Gear, with the RAW reload time shown as a notification.",
+  "version": "1.2.0",
+  "authors": [
+    {
+      "name": "Ronsterama"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "CoC7",
+        "type": "system",
+        "compatibility": {
+          "minimum": "8.3",
+          "verified": "8.15"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/ammo-tracker.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "https://github.com/ronsterama/coc7-ammo-tracker",
+  "manifest": "https://github.com/ronsterama/coc7-ammo-tracker/releases/latest/download/module.json",
+  "download": "https://github.com/ronsterama/coc7-ammo-tracker/releases/download/v1.2.0/module.zip"
+}

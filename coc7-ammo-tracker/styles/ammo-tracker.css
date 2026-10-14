@@ -1,0 +1,154 @@
+/* CoC7 Ammo Tracker: every selector is scoped to a .cat-* class. */
+
+/* ---------------------------------------- */
+/*  Weapon row control                      */
+/* ---------------------------------------- */
+.cat-reload {
+  --cat-accent: var(--main-sheet-interactive-color, #670b0b);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  box-sizing: border-box;
+  padding: 1px 5px;
+  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 3px;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  color: inherit;
+  font-size: var(--font-size-12, 12px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.25;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* V2 / V3 combat tab: right side of the name cell (block or flex parent) */
+.cat-reload.cat-float {
+  float: right;
+  order: 99;
+  margin: 0 2px 0 6px;
+}
+
+/* Summarized sheet: last item in the flex name cell */
+.cat-reload.cat-inline {
+  flex: 0 0 auto;
+  margin: 0 2px 0 auto;
+}
+
+.cat-reload .cat-icon {
+  font-size: 0.9em;
+  color: var(--cat-accent);
+}
+
+.cat-reload .cat-sep {
+  opacity: 0.6;
+}
+
+.cat-reload:not(.cat-disabled):hover,
+.cat-reload:focus-visible {
+  border-color: var(--cat-accent);
+  text-shadow: 0 0 6px var(--color-shadow-primary, #ff6400);
+  outline: none;
+}
+
+.cat-reload.cat-disabled {
+  opacity: 0.45;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+.cat-reload.cat-disabled:hover {
+  text-shadow: none;
+}
+
+.cat-reload.cat-busy .cat-icon {
+  animation: cat-spin 0.8s linear infinite;
+}
+
+@keyframes cat-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* CoC7's dark theme turns its labels light red; the default accent is too dark there */
+body.theme-dark .application.coc7:not(.theme-light) .cat-reload,
+.themed.theme-dark.application.coc7 .cat-reload {
+  --cat-accent: var(--color-labels, #b44849);
+}
+
+/* ---------------------------------------- */
+/*  Ginzzzu's CoC7 Sheets: reserve line     */
+/* ---------------------------------------- */
+/* Second line inside Ginzzzu's bold "6 / 6" count; matches its small label text */
+.cat-gci-reserve {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+.cat-gci-reserve.cat-disabled,
+[data-action="gci-reload-weapon"].cat-disabled {
+  opacity: 0.45;
+}
+
+/* ---------------------------------------- */
+/*  Item sheet: Is ammunition + Calibre     */
+/* ---------------------------------------- */
+.cat-item-ammo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin-top: 2px;
+}
+
+.cat-item-ammo .cat-check {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.cat-item-ammo .cat-check input[type="checkbox"] {
+  margin: 0;
+}
+
+/* ---------------------------------------- */
+/*  Weapon sheet: Ammunition fieldset       */
+/* ---------------------------------------- */
+.cat-weapon-ammo .cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 6px 12px;
+}
+
+.cat-weapon-ammo .cat-hint {
+  margin: 6px 0 0;
+  font-size: var(--font-size-11, 11px);
+  opacity: 0.75;
+}
+
+/* Shared label + input row */
+.cat-field {
+  display: flex;
+  flex: 1 1 12em;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cat-field .cat-label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.cat-field input,
+.cat-field select {
+  flex: 1 1 auto;
+  min-width: 6em;
+}
